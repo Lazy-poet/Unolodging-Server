@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const firebaseConfig_1 = require("../firebaseConfig");
 const router = express_1.Router();
-router.delete("/", async function (req, res, next) {
+router.delete("/:id", async function (req, res, next) {
     const { id } = req.params;
     // id = JSON.stringify(id)
     // res.status(200).json({ id, type: `${type}s` })
