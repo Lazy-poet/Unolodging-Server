@@ -9,9 +9,17 @@ router.get("/:id", function (req, res, next) {
         .get()
         .then((resp) => {
         const allRooms = resp.docs.map((room) => ({ ...room.data() }));
-        const bookedByUsers = allRooms.filter((room) => room.userEmail === id);
+        const bookedByUsers = allRooms.filter((room) => room.userEmail === id).map(item => item.roomId);
+        console.log(bookedByUsers);
         const hostBookings = allRooms.filter(room => room.hostId === id);
-        res.status(200).json({ userBookings: bookedByUsers, hostBookings });
+        firebaseConfig_1.db.collection("rooms")
+            .get()
+            .then((resp) => {
+            const allRooms = resp.docs.map((room) => ({ ...room.data() }));
+            const rooms = allRooms.find(room => bookedByUsers.includes(room.roomId));
+            console.log(rooms);
+            res.status(200).json({ userBookings: rooms, hostBookings });
+        });
     });
 });
 exports.default = router;
