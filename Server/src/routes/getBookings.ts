@@ -17,8 +17,7 @@ router.get(
         .get()
         .then((resp)=> {
             const allRooms = resp.docs.map((room) => ({ ...room.data() }));
-            const rooms = allRooms.find(room => bookedByUsers.includes(room.roomId))
-            console.log(rooms)
+            const rooms = allRooms.filter(room => bookedByUsers.includes(room.roomId))
             res.status(200).json({userBookings: rooms, hostBookings});
         } )
     });
