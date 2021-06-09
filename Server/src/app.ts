@@ -17,6 +17,7 @@ import deleteRoomRouter from './routes/deleteroom';
 import allHostRouter from './routes/allHost';
 import allGuests from './routes/allGuests';
 import roomBooking from './routes/roomBooking';
+import getBookings from './routes/getBookings';
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use('/api/delete', deleteRoomRouter);
 app.use('/api/getAllHosts', allHostRouter);
 app.use('/api/allGuests', allGuests);
 app.use('/api/bookings', roomBooking);
+app.use('/api/getBookings', getBookings);
 
 
 // catch 404 and forward to error handler

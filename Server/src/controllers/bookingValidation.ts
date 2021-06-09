@@ -6,6 +6,7 @@ function validateRoomBooking(requestBody: Record<string, any>) {
         roomId: Joi.string(),
         name: Joi.string().required(),
         phone: Joi.number().required(),
+        userEmail: Joi.string()
 
     }
     const result = Joi.validate(requestBody, schema)

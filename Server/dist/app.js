@@ -21,6 +21,7 @@ const deleteroom_1 = __importDefault(require("./routes/deleteroom"));
 const allHost_1 = __importDefault(require("./routes/allHost"));
 const allGuests_1 = __importDefault(require("./routes/allGuests"));
 const roomBooking_1 = __importDefault(require("./routes/roomBooking"));
+const getBookings_1 = __importDefault(require("./routes/getBookings"));
 const app = express_1.default();
 // view engine setup
 app.set('views', path_1.default.join(__dirname, '../views'));
@@ -51,6 +52,7 @@ app.use('/api/delete', deleteroom_1.default);
 app.use('/api/getAllHosts', allHost_1.default);
 app.use('/api/allGuests', allGuests_1.default);
 app.use('/api/bookings', roomBooking_1.default);
+app.use('/api/getBookings', getBookings_1.default);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(http_errors_1.default(404));

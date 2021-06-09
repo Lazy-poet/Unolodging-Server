@@ -10,6 +10,7 @@ function validateRoomBooking(requestBody) {
         roomId: joi_1.default.string(),
         name: joi_1.default.string().required(),
         phone: joi_1.default.number().required(),
+        userEmail: joi_1.default.string()
     };
     const result = joi_1.default.validate(requestBody, schema);
     if (result.error) {
